@@ -23,7 +23,7 @@ export default function ShopKioskPage() {
 
   const [shopData, setShopData] = useState(() => {
     try {
-      const cached = localStorage.getItem(`printflow_shop_${shopSlug}`);
+      const cached = localStorage.getItem(`printpulse_shop_${shopSlug}`);
       if (!cached) return null;
       const parsed = JSON.parse(cached);
       if (parsed && isDummyPhone(parsed.contactWhatsapp)) {
@@ -74,13 +74,13 @@ export default function ShopKioskPage() {
           }
           setShopData(res.shop);
           try {
-            localStorage.setItem(`printflow_shop_${shopSlug}`, JSON.stringify(res.shop));
+            localStorage.setItem(`printpulse_shop_${shopSlug}`, JSON.stringify(res.shop));
           } catch (_) { }
           if (res.shop.services && res.shop.services.length > 0) {
             setActiveService(res.shop.services[0].slug);
           }
         } else {
-          const cached = localStorage.getItem(`printflow_shop_${shopSlug}`);
+          const cached = localStorage.getItem(`printpulse_shop_${shopSlug}`);
           if (cached) {
             try {
               const parsed = JSON.parse(cached);
@@ -96,7 +96,7 @@ export default function ShopKioskPage() {
           }
         }
       } catch (err) {
-        const cached = localStorage.getItem(`printflow_shop_${shopSlug}`);
+        const cached = localStorage.getItem(`printpulse_shop_${shopSlug}`);
         if (cached) {
           try {
             const parsed = JSON.parse(cached);
@@ -293,8 +293,8 @@ ${fileSummaryLines}
 
         // Cache submitted order into localStorage for immediate offline/local tracking
         try {
-          localStorage.setItem(`printflow_order_${res.order.publicToken}`, JSON.stringify(res.order));
-          const recent = JSON.parse(localStorage.getItem('printflow_recent_orders') || '[]');
+          localStorage.setItem(`printpulse_order_${res.order.publicToken}`, JSON.stringify(res.order));
+          const recent = JSON.parse(localStorage.getItem('printpulse_recent_orders') || '[]');
           const newEntry = {
             token: res.order.publicToken,
             customerName: customerName.trim() || 'Kiosk Customer',
@@ -305,7 +305,7 @@ ${fileSummaryLines}
             updatedAt: new Date().toISOString()
           };
           const updated = [newEntry, ...recent.filter(r => r.token !== res.order.publicToken)].slice(0, 15);
-          localStorage.setItem('printflow_recent_orders', JSON.stringify(updated));
+          localStorage.setItem('printpulse_recent_orders', JSON.stringify(updated));
         } catch (_) { }
 
         // Trigger success toast notification at bottom-right
@@ -532,8 +532,8 @@ ${fileSummaryLines}
               type="button"
               onClick={() => setFulfillmentType('COUNTER_PICKUP')}
               className={`p-3 rounded-xl text-left border transition-all flex items-center gap-2.5 ${fulfillmentType === 'COUNTER_PICKUP'
-                  ? 'bg-blue-50 border-blue-500 shadow-sm dark:bg-blue-500/20 dark:border-blue-400'
-                  : 'bg-white border-slate-200 hover:bg-slate-50 dark:bg-[#16181b] dark:border-white/5 dark:hover:bg-[#1f2227]'
+                ? 'bg-blue-50 border-blue-500 shadow-sm dark:bg-blue-500/20 dark:border-blue-400'
+                : 'bg-white border-slate-200 hover:bg-slate-50 dark:bg-[#16181b] dark:border-white/5 dark:hover:bg-[#1f2227]'
                 }`}
             >
               <Store className={`w-4 h-4 shrink-0 ${fulfillmentType === 'COUNTER_PICKUP' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-500 dark:text-slate-400'}`} />
@@ -551,8 +551,8 @@ ${fileSummaryLines}
               type="button"
               onClick={() => setFulfillmentType('DELIVERY')}
               className={`p-3 rounded-xl text-left border transition-all flex items-center gap-2.5 ${fulfillmentType === 'DELIVERY'
-                  ? 'bg-blue-50 border-blue-500 shadow-sm dark:bg-blue-500/20 dark:border-blue-400'
-                  : 'bg-white border-slate-200 hover:bg-slate-50 dark:bg-[#16181b] dark:border-white/5 dark:hover:bg-[#1f2227]'
+                ? 'bg-blue-50 border-blue-500 shadow-sm dark:bg-blue-500/20 dark:border-blue-400'
+                : 'bg-white border-slate-200 hover:bg-slate-50 dark:bg-[#16181b] dark:border-white/5 dark:hover:bg-[#1f2227]'
                 }`}
             >
               <Truck className={`w-4 h-4 shrink-0 ${fulfillmentType === 'DELIVERY' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-500 dark:text-slate-400'}`} />
@@ -886,7 +886,7 @@ ${fileSummaryLines}
               {(() => {
                 let recent = [];
                 try {
-                  recent = JSON.parse(localStorage.getItem('printflow_recent_orders') || '[]');
+                  recent = JSON.parse(localStorage.getItem('printpulse_recent_orders') || '[]');
                 } catch (_) {
                   recent = [];
                 }

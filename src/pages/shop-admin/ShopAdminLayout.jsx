@@ -38,7 +38,7 @@ export default function ShopAdminLayout() {
   };
 
   const handleLogout = () => {
-    toast.info('Signed Out', 'You have been signed out of PrintFlow.');
+    toast.info('Signed Out', 'You have been signed out of PrintPulse.');
     logout();
   };
 
@@ -161,7 +161,7 @@ export default function ShopAdminLayout() {
         <header className="h-16 border-b border-slate-800 bg-slate-950/90 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between sticky top-0 z-30 shrink-0">
           {/* Left Breadcrumb */}
           <div className="flex items-center gap-2 text-xs text-slate-400 truncate">
-            <Link to="/" className="hover:text-slate-200 transition-colors hidden sm:inline">PrintFlow</Link>
+            <Link to="/" className="hover:text-slate-200 transition-colors hidden sm:inline">PrintPulse</Link>
             <span className="hidden sm:inline">/</span>
             <span className="font-medium text-slate-300 truncate">
               {navItems.find((i) => i.path === location.pathname)?.label || 'Shop Counter'}

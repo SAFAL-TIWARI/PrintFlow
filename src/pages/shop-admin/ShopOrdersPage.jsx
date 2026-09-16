@@ -14,7 +14,7 @@ export default function ShopOrdersPage() {
 
   const [orders, setOrders] = useState(() => {
     try {
-      const cached = localStorage.getItem('printflow_cached_shop_orders_page');
+      const cached = localStorage.getItem('printpulse_cached_shop_orders_page');
       return cached ? JSON.parse(cached) : [];
     } catch (_) { return []; }
   });
@@ -34,7 +34,7 @@ export default function ShopOrdersPage() {
       if (res.success) {
         setOrders(res.orders || []);
         try {
-          localStorage.setItem('printflow_cached_shop_orders_page', JSON.stringify(res.orders || []));
+          localStorage.setItem('printpulse_cached_shop_orders_page', JSON.stringify(res.orders || []));
         } catch (_) { }
       }
     } catch (err) {
@@ -73,7 +73,7 @@ export default function ShopOrdersPage() {
   const handleDownloadPDF = () => {
     try {
       const doc = new jsPDF('landscape');
-      const shopName = sessionStorage.getItem('inspected_shop_name') || user?.shopName || 'PrintFlow Counter';
+      const shopName = sessionStorage.getItem('inspected_shop_name') || user?.shopName || 'printpulse Counter';
       const timestamp = new Date().toLocaleString();
 
       // Calculate Summary Stats
@@ -153,7 +153,7 @@ export default function ShopOrdersPage() {
         }
       });
 
-      doc.save(`printflow-orders-${Date.now()}.pdf`);
+      doc.save(`printpulse-orders-${Date.now()}.pdf`);
       toast.success('PDF Archive Generated', `Successfully downloaded ${orders.length} orders report.`);
     } catch (err) {
       toast.error('PDF Export Failed', err.message || 'Could not generate orders PDF.');
@@ -283,8 +283,8 @@ export default function ShopOrdersPage() {
                       <td className="px-4 py-3">
                         <span
                           className={`px-2 py-0.5 rounded text-[10px] font-bold ${o.paymentStatus === 'PAID'
-                              ? 'bg-emerald-500/10 text-emerald-400'
-                              : 'bg-blue-500/10 text-blue-400'
+                            ? 'bg-emerald-500/10 text-emerald-400'
+                            : 'bg-blue-500/10 text-blue-400'
                             }`}
                         >
                           {o.paymentStatus} ({o.paymentMethod || 'PENDING'})

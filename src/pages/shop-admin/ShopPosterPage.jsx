@@ -172,7 +172,7 @@ export default function ShopPosterPage() {
       doc.setTextColor(100, 116, 139);
       doc.text('No customer app required · Files auto-deleted after printing', startX + 80, startY + cardHeight - 8, { align: 'center' });
 
-      doc.save(`printflow-counter-qr-${shopSlug}.pdf`);
+      doc.save(`printpulse-counter-qr-${shopSlug}.pdf`);
       toast.success('Counter QR Poster Ready', 'PDF downloaded successfully. Ready to print or laminate.');
     } catch (err) {
       console.error('PDF error:', err);

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Printer, QrCode, Shield, Zap, Clock, Smartphone, CheckCircle, 
+import {
+  Printer, QrCode, Shield, Zap, Clock, Smartphone, CheckCircle,
   ArrowRight, Store, HardDriveDownload, Sparkles, Check, ChevronRight, HelpCircle
 } from 'lucide-react';
 import Navbar from '../components/common/Navbar';
@@ -85,7 +85,7 @@ export default function LandingPage() {
                 <div className="w-3 h-3 rounded-full bg-rose-500/80"></div>
                 <div className="w-3 h-3 rounded-full bg-amber-500/80"></div>
                 <div className="w-3 h-3 rounded-full bg-emerald-500/80"></div>
-                <span className="text-xs text-slate-400 ml-2 font-mono">printflow.io/shop/saffron-enterprises</span>
+                <span className="text-xs text-slate-400 ml-2 font-mono">printpulse.io/shop/saffron-enterprises</span>
               </div>
               <Link to="/shop/saffron-enterprises" className="text-xs text-emerald-400 font-medium hover:underline flex items-center gap-1">
                 Open in new tab <ChevronRight className="w-3 h-3" />
@@ -217,22 +217,20 @@ export default function LandingPage() {
                   <button
                     type="button"
                     onClick={() => setCalcColor('bw')}
-                    className={`py-2.5 rounded-xl text-xs font-semibold border transition-all ${
-                      calcColor === 'bw' 
-                        ? 'bg-emerald-600/20 border-emerald-500 text-emerald-300' 
+                    className={`py-2.5 rounded-xl text-xs font-semibold border transition-all ${calcColor === 'bw'
+                        ? 'bg-emerald-600/20 border-emerald-500 text-emerald-300'
                         : 'bg-slate-950 border-slate-800 text-slate-400 hover:text-white'
-                    }`}
+                      }`}
                   >
                     B&amp;W
                   </button>
                   <button
                     type="button"
                     onClick={() => setCalcColor('color')}
-                    className={`py-2.5 rounded-xl text-xs font-semibold border transition-all ${
-                      calcColor === 'color' 
-                        ? 'bg-emerald-600/20 border-emerald-500 text-emerald-300' 
+                    className={`py-2.5 rounded-xl text-xs font-semibold border transition-all ${calcColor === 'color'
+                        ? 'bg-emerald-600/20 border-emerald-500 text-emerald-300'
                         : 'bg-slate-950 border-slate-800 text-slate-400 hover:text-white'
-                    }`}
+                      }`}
                   >
                     Color
                   </button>
@@ -245,22 +243,20 @@ export default function LandingPage() {
                   <button
                     type="button"
                     onClick={() => setCalcSides('single')}
-                    className={`py-2.5 rounded-xl text-xs font-semibold border transition-all ${
-                      calcSides === 'single' 
-                        ? 'bg-emerald-600/20 border-emerald-500 text-emerald-300' 
+                    className={`py-2.5 rounded-xl text-xs font-semibold border transition-all ${calcSides === 'single'
+                        ? 'bg-emerald-600/20 border-emerald-500 text-emerald-300'
                         : 'bg-slate-950 border-slate-800 text-slate-400 hover:text-white'
-                    }`}
+                      }`}
                   >
                     Single
                   </button>
                   <button
                     type="button"
                     onClick={() => setCalcSides('double')}
-                    className={`py-2.5 rounded-xl text-xs font-semibold border transition-all ${
-                      calcSides === 'double' 
-                        ? 'bg-emerald-600/20 border-emerald-500 text-emerald-300' 
+                    className={`py-2.5 rounded-xl text-xs font-semibold border transition-all ${calcSides === 'double'
+                        ? 'bg-emerald-600/20 border-emerald-500 text-emerald-300'
                         : 'bg-slate-950 border-slate-800 text-slate-400 hover:text-white'
-                    }`}
+                      }`}
                   >
                     Double (Duplex)
                   </button>
@@ -299,7 +295,7 @@ export default function LandingPage() {
               </h2>
 
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                Web browsers cannot physically send raw documents to your USB or LAN printer over the internet. The PrintFlow Windows Agent bridges this gap safely and automatically.
+                Web browsers cannot physically send raw documents to your USB or LAN printer over the internet. The PrintPulse Windows Agent bridges this gap safely and automatically.
               </p>
 
               <div className="space-y-3 text-sm">
@@ -336,13 +332,13 @@ export default function LandingPage() {
 
             <div className="p-6 rounded-2xl bg-slate-950 border border-slate-800 font-mono text-xs text-slate-300 space-y-2 shadow-2xl">
               <div className="flex items-center justify-between pb-3 border-b border-slate-800 text-slate-500">
-                <span>PrintFlow Agent Console v1.0.0</span>
+                <span>PrintPulse Agent Console v1.0.0</span>
                 <span className="text-emerald-400 flex items-center gap-1 font-sans">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                   Connected
                 </span>
               </div>
-              <p className="text-slate-500">&gt; Initializing PrintFlow Windows Spooler Client...</p>
+              <p className="text-slate-500">&gt; Initializing PrintPulse Windows Spooler Client...</p>
               <p className="text-slate-400">&gt; Detected Printer: Canon imageRUNNER ADVANCE C3530 (Color / Duplex)</p>
               <p className="text-slate-400">&gt; Detected Printer: HP LaserJet Enterprise M608 (High-speed B&amp;W)</p>
               <p className="text-emerald-400 font-bold">&gt; [OK] Device Token Verified. Heartbeat active.</p>

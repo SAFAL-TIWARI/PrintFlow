@@ -12,13 +12,13 @@ export default function ShopDashboard() {
   const { toast } = useToast();
   const [stats, setStats] = useState(() => {
     try {
-      const cached = localStorage.getItem('printflow_cached_shop_stats');
+      const cached = localStorage.getItem('printpulse_cached_shop_stats');
       return cached ? JSON.parse(cached) : null;
     } catch (_) { return null; }
   });
   const [orders, setOrders] = useState(() => {
     try {
-      const cached = localStorage.getItem('printflow_cached_shop_orders');
+      const cached = localStorage.getItem('printpulse_cached_shop_orders');
       return cached ? JSON.parse(cached) : [];
     } catch (_) { return []; }
   });
@@ -39,7 +39,7 @@ export default function ShopDashboard() {
       ]);
       if (statsRes.status === 'fulfilled' && statsRes.value?.success) {
         setStats(statsRes.value.stats);
-        try { localStorage.setItem('printflow_cached_shop_stats', JSON.stringify(statsRes.value.stats)); } catch (_) { }
+        try { localStorage.setItem('printpulse_cached_shop_stats', JSON.stringify(statsRes.value.stats)); } catch (_) { }
       }
       if (ordersRes.status === 'fulfilled' && ordersRes.value?.success) {
         const freshOrders = ordersRes.value.orders || [];
@@ -60,7 +60,7 @@ export default function ShopDashboard() {
         initialLoadDone.current = true;
 
         setOrders(freshOrders);
-        try { localStorage.setItem('printflow_cached_shop_orders', JSON.stringify(freshOrders)); } catch (_) { }
+        try { localStorage.setItem('printpulse_cached_shop_orders', JSON.stringify(freshOrders)); } catch (_) { }
       }
     } catch (err) {
       console.error('Error fetching dashboard data:', err);
@@ -349,8 +349,8 @@ export default function ShopDashboard() {
                           type="button"
                           onClick={() => handleCashPaid(order._id)}
                           className={`px-3.5 py-1.5 rounded-lg text-xs font-extrabold transition-all flex items-center gap-1 shadow-md ${order.orderStatus === 'CUSTOMER_RECEIVED'
-                              ? 'bg-amber-400 hover:bg-amber-300 text-slate-950 shadow-amber-500/20 ring-2 ring-amber-400/50 animate-pulse'
-                              : 'bg-blue-500 hover:bg-blue-400 text-slate-950'
+                            ? 'bg-amber-400 hover:bg-amber-300 text-slate-950 shadow-amber-500/20 ring-2 ring-amber-400/50 animate-pulse'
+                            : 'bg-blue-500 hover:bg-blue-400 text-slate-950'
                             }`}
                         >
                           <DollarSign className="w-3.5 h-3.5" />

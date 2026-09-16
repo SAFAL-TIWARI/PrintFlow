@@ -6,7 +6,7 @@ function getAuthHeaders(url = '') {
   if (url.startsWith('/auth/login') || url.startsWith('/auth/register')) {
     return {};
   }
-  const token = localStorage.getItem('printflow_token') || localStorage.getItem('token') || localStorage.getItem('printflow_token');
+  const token = localStorage.getItem('printpulse_token') || localStorage.getItem('token') || localStorage.getItem('printpulse_token');
   const inspectedShopId = sessionStorage.getItem('inspected_shop_id');
   return {
     ...(token ? { Authorization: `Bearer ${token}` } : {}),
@@ -55,7 +55,7 @@ async function request(url, options = {}) {
 
   // If all candidates failed due to network connection
   if (lastError?.message?.includes('Failed to fetch') || lastError?.name === 'TypeError') {
-    throw new Error('Cannot connect to PrintFlow backend server. Please verify backend is running on port 5000.');
+    throw new Error('Cannot connect to printpulse backend server. Please verify backend is running on port 5000.');
   }
   throw lastError || new Error('Network request failed');
 }

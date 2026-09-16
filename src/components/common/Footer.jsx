@@ -68,7 +68,7 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} PrintFlow Technologies. Built for speed and reliability.</p>
+          <p>© {new Date().getFullYear()} PrintPulse Technologies. Built for speed and reliability.</p>
           <p className="flex items-center gap-1">
             Engineered for high-volume Xerox counters with <Heart className="w-3 h-3 text-rose-500 fill-rose-500" />
           </p>

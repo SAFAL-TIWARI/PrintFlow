@@ -9,7 +9,7 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     async function loadUser() {
-      const token = localStorage.getItem('printflow_token') || localStorage.getItem('token') || localStorage.getItem('printflow_token');
+      const token = localStorage.getItem('printpulse_token') || localStorage.getItem('token') || localStorage.getItem('printpulse_token');
       if (!token) {
         setLoading(false);
         return;
@@ -19,15 +19,15 @@ export function AuthProvider({ children }) {
         if (res.success && res.user) {
           setUser(res.user);
         } else {
-          localStorage.removeItem('printflow_token');
+          localStorage.removeItem('printpulse_token');
           localStorage.removeItem('token');
-          localStorage.removeItem('printflow_token');
+          localStorage.removeItem('printpulse_token');
         }
       } catch (err) {
         console.warn('Auth session invalid or expired:', err.message);
-        localStorage.removeItem('printflow_token');
+        localStorage.removeItem('printpulse_token');
         localStorage.removeItem('token');
-        localStorage.removeItem('printflow_token');
+        localStorage.removeItem('printpulse_token');
       } finally {
         setLoading(false);
       }
@@ -37,16 +37,16 @@ export function AuthProvider({ children }) {
 
   const login = async (email, password) => {
     // Clear any stale tokens or inspection session before authenticating
-    localStorage.removeItem('printflow_token');
+    localStorage.removeItem('printpulse_token');
     localStorage.removeItem('token');
-    localStorage.removeItem('printflow_token');
+    localStorage.removeItem('printpulse_token');
     sessionStorage.removeItem('inspected_shop_id');
     sessionStorage.removeItem('inspected_shop_name');
     sessionStorage.removeItem('inspected_shop_slug');
 
     const res = await api.login(email, password);
     if (res.success && res.token) {
-      localStorage.setItem('printflow_token', res.token);
+      localStorage.setItem('printpulse_token', res.token);
       setUser(res.user);
       return res.user;
     }
@@ -59,7 +59,7 @@ export function AuthProvider({ children }) {
       return res;
     }
     if (res.success && res.token) {
-      localStorage.setItem('printflow_token', res.token);
+      localStorage.setItem('printpulse_token', res.token);
       setUser(res.user);
       return res.user;
     }
@@ -67,9 +67,9 @@ export function AuthProvider({ children }) {
   };
 
   const logout = () => {
-    localStorage.removeItem('printflow_token');
+    localStorage.removeItem('printpulse_token');
     localStorage.removeItem('token');
-    localStorage.removeItem('printflow_token');
+    localStorage.removeItem('printpulse_token');
     sessionStorage.removeItem('inspected_shop_id');
     sessionStorage.removeItem('inspected_shop_name');
     sessionStorage.removeItem('inspected_shop_slug');

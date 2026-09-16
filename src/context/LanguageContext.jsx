@@ -117,7 +117,7 @@ export const translations = {
     payCashDeliverySub: 'Pay cash on delivery',
     payCashPickupSub: 'Hand cash to shopkeeper',
     printCompletedTitle: 'Print Fulfilled & Completed!',
-    printCompletedSub: 'Receipt verified and payment settled. Thank you for using PrintFlow!',
+    printCompletedSub: 'Receipt verified and payment settled. Thank you for using PrintPulse!',
     grandTotal: 'Grand Total',
     realtimeTimeline: 'Realtime Print Timeline',
     processing: 'Processing...',
@@ -145,7 +145,7 @@ export const translations = {
     deliveryModalSub: 'Enter your hostel room or delivery address. Delivery staff will deliver to you.',
     confirmDeliveryReq: 'Confirm & Send Delivery Request',
     cashPendingNote: 'Prints collected. Please settle cash with delivery staff or counter.',
-    thankYou: 'Thank you for using PrintFlow! Your prints are ready.',
+    thankYou: 'Thank you for using PrintPulse! Your prints are ready.',
     statusSubmitted: 'Order Placed (Submitted)',
     statusAccepted: 'Accepted by Counter',
     statusPrinting: 'Printing in Progress',
@@ -269,7 +269,7 @@ export const translations = {
     payCashDeliverySub: 'डिलीवरी पर नकद भुगतान करें',
     payCashPickupSub: 'दुकानदार को नकद दें',
     printCompletedTitle: 'प्रिंट संपन्न एवं पूरा हुआ!',
-    printCompletedSub: 'रसीद सत्यापित और भुगतान चुकता हो गया। PrintFlow का उपयोग करने के लिए धन्यवाद!',
+    printCompletedSub: 'रसीद सत्यापित और भुगतान चुकता हो गया। PrintPulse का उपयोग करने के लिए धन्यवाद!',
     grandTotal: 'कुल योग (Grand Total)',
     realtimeTimeline: 'रियलटाइम प्रिंट समयरेखा',
     processing: 'प्रोसेसिंग...',
@@ -297,7 +297,7 @@ export const translations = {
     deliveryModalSub: 'अपना हॉस्टल कमरा नंबर या डिलीवरी पता दर्ज करें। डिलीवरी स्टाफ आप तक पहुंचाएगा।',
     confirmDeliveryReq: 'पुष्टि करें और डिलीवरी अनुरोध भेजें',
     cashPendingNote: 'प्रिंट प्राप्त हुए। कृपया डिलीवरी स्टाफ या काउंटर पर नकद भुगतान करें।',
-    thankYou: 'PrintFlow का उपयोग करने के लिए धन्यवाद! आपके प्रिंट तैयार हैं।',
+    thankYou: 'PrintPulse का उपयोग करने के लिए धन्यवाद! आपके प्रिंट तैयार हैं।',
     statusSubmitted: 'ऑर्डर सबमिट हुआ (Submitted)',
     statusAccepted: 'काउंटर द्वारा स्वीकृत (Accepted)',
     statusPrinting: 'प्रिंट हो रहा है (Printing)',
@@ -312,11 +312,11 @@ export const translations = {
 
 export function LanguageProvider({ children }) {
   const [lang, setLang] = useState(() => {
-    return localStorage.getItem('printflow_lang') || 'en';
+    return localStorage.getItem('printpulse_lang') || 'en';
   });
 
   useEffect(() => {
-    localStorage.setItem('printflow_lang', lang);
+    localStorage.setItem('printpulse_lang', lang);
   }, [lang]);
 
   const toggleLanguage = () => {
@@ -337,8 +337,8 @@ export function useLanguage() {
   if (!ctx) {
     return {
       lang: 'en',
-      setLang: () => {},
-      toggleLanguage: () => {},
+      setLang: () => { },
+      toggleLanguage: () => { },
       t: translations.en,
       isHindi: false
     };
@@ -353,11 +353,10 @@ export function LanguageToggle({ className = '' }) {
     <button
       type="button"
       onClick={toggleLanguage}
-      className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border transition-all shadow-sm active:scale-95 cursor-pointer font-bold text-xs ${
-        lang === 'hi'
+      className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border transition-all shadow-sm active:scale-95 cursor-pointer font-bold text-xs ${lang === 'hi'
           ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/25'
           : 'bg-blue-500/10 border-blue-500/25 text-blue-600 dark:text-blue-400 hover:bg-blue-500/20'
-      } ${className}`}
+        } ${className}`}
       title={lang === 'en' ? 'Switch to Hindi (हिन्दी में बदलें)' : 'Switch to English (अंग्रेज़ी में बदलें)'}
       aria-label="Toggle Language"
     >

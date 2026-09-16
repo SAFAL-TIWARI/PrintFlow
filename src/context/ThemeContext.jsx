@@ -5,11 +5,11 @@ const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('printflow_theme') || 'dark';
+    return localStorage.getItem('printpulse_theme') || 'dark';
   });
 
   useEffect(() => {
-    localStorage.setItem('printflow_theme', theme);
+    localStorage.setItem('printpulse_theme', theme);
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
     } else {
@@ -39,11 +39,10 @@ export function ThemeToggle({ className = '' }) {
     <button
       type="button"
       onClick={toggleTheme}
-      className={`p-2 rounded-xl border transition-all flex items-center justify-center ${
-        isDark
+      className={`p-2 rounded-xl border transition-all flex items-center justify-center ${isDark
           ? 'bg-slate-900 border-slate-700 text-amber-400 hover:bg-slate-800'
           : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-100 shadow-sm'
-      } ${className}`}
+        } ${className}`}
       title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
       aria-label="Toggle Theme"
     >

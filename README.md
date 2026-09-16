@@ -1,4 +1,4 @@
-# PrintFlow — Smart QR Print Counter & Queue SaaS
+# PrintPulse — Smart QR Print Counter & Queue SaaS
 
 Complete production-ready multi-tenant online printing platform for local printing and Xerox shops.
 

@@ -43,7 +43,7 @@ export default function ShopDirectoryPage() {
             Verified Print Counters
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold font-display text-white">
-            Find an Authorized PrintFlow Shop
+            Find an Authorized PrintPulse Shop
           </h1>
           <p className="mt-2 text-sm text-slate-400">
             Select a verified Xerox or digital printing counter to open their live mobile kiosk, upload your files, and collect your prints.

@@ -224,7 +224,7 @@ export default function ShopPrintersPage() {
             <div>
               <h3 className="text-xl font-bold text-white">Windows Agent Pairing Code</h3>
               <p className="text-xs text-slate-400 mt-1">
-                Enter this 6-digit code in the PrintFlow Agent running on your shopkeeper PC:
+                Enter this 6-digit code in the PrintPulse Agent running on your shopkeeper PC:
               </p>
             </div>
 

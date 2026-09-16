@@ -16,7 +16,7 @@ export default function DownloadAgentPage() {
             Official Desktop Spooler
           </div>
           <h1 className="text-3xl sm:text-5xl font-extrabold font-display text-white tracking-tight">
-            PrintFlow Windows Print Agent
+            PrintPulse Windows Print Agent
           </h1>
           <p className="mt-3 text-sm sm:text-base text-slate-400 leading-relaxed">
             The lightweight physical agent that runs on your counter PC, discovers your Windows printers, and streams print jobs in real-time.

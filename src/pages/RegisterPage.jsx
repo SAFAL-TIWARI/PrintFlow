@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { 
-  Store, Mail, Lock, Phone, MapPin, ArrowRight, AlertCircle, 
-  Eye, EyeOff, CheckCircle2, Navigation, Loader2, Clock 
+import {
+  Store, Mail, Lock, Phone, MapPin, ArrowRight, AlertCircle,
+  Eye, EyeOff, CheckCircle2, Navigation, Loader2, Clock
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
@@ -101,7 +101,7 @@ export default function RegisterPage() {
         setSubmittedForApproval(true);
         toast.success('Registration Submitted!', 'Your shop request has been sent for admin review.');
       } else {
-        toast.success('Account Created', 'Welcome to PrintFlow!');
+        toast.success('Account Created', 'Welcome to printpulse!');
         navigate('/shop-admin');
       }
     } catch (err) {
