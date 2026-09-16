@@ -6,7 +6,7 @@ function getAuthHeaders(url = '') {
   if (url.startsWith('/auth/login') || url.startsWith('/auth/register')) {
     return {};
   }
-  const token = localStorage.getItem('printflow_token') || localStorage.getItem('token') || localStorage.getItem('printpulse_token');
+  const token = localStorage.getItem('printflow_token') || localStorage.getItem('token') || localStorage.getItem('printflow_token');
   const inspectedShopId = sessionStorage.getItem('inspected_shop_id');
   return {
     ...(token ? { Authorization: `Bearer ${token}` } : {}),

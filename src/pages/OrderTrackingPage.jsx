@@ -18,7 +18,7 @@ export default function OrderTrackingPage() {
   const { toast } = useToast();
   const [order, setOrder] = useState(() => {
     try {
-      const cached = localStorage.getItem(`printpulse_order_${token}`);
+      const cached = localStorage.getItem(`printflow_order_${token}`);
       return cached ? JSON.parse(cached) : null;
     } catch (_) {
       return null;
@@ -73,8 +73,8 @@ export default function OrderTrackingPage() {
         setOrder(res.order);
         setError(null);
         try {
-          localStorage.setItem(`printpulse_order_${token}`, JSON.stringify(res.order));
-          const recent = JSON.parse(localStorage.getItem('printpulse_recent_orders') || '[]');
+          localStorage.setItem(`printflow_order_${token}`, JSON.stringify(res.order));
+          const recent = JSON.parse(localStorage.getItem('printflow_recent_orders') || '[]');
           const updated = [
             {
               token: res.order.publicToken,
@@ -86,10 +86,10 @@ export default function OrderTrackingPage() {
             },
             ...recent.filter(r => r.token !== res.order.publicToken)
           ].slice(0, 15);
-          localStorage.setItem('printpulse_recent_orders', JSON.stringify(updated));
-        } catch (_) {}
+          localStorage.setItem('printflow_recent_orders', JSON.stringify(updated));
+        } catch (_) { }
       } else {
-        const cached = localStorage.getItem(`printpulse_order_${token}`);
+        const cached = localStorage.getItem(`printflow_order_${token}`);
         if (cached) {
           try {
             setOrder(JSON.parse(cached));
@@ -102,7 +102,7 @@ export default function OrderTrackingPage() {
         }
       }
     } catch (err) {
-      const cached = localStorage.getItem(`printpulse_order_${token}`);
+      const cached = localStorage.getItem(`printflow_order_${token}`);
       if (cached) {
         try {
           setOrder(JSON.parse(cached));
@@ -431,11 +431,10 @@ export default function OrderTrackingPage() {
               )}
               <div className="pt-1 flex items-center gap-2">
                 <span className="text-[10px] uppercase font-semibold text-slate-400">{t.deliveryStatus}</span>
-                <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
-                  order.deliveryStatus === 'DELIVERED'
+                <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${order.deliveryStatus === 'DELIVERED'
                     ? 'bg-emerald-500/10 text-emerald-400'
                     : 'bg-blue-500/10 text-blue-400'
-                }`}>
+                  }`}>
                   {formatDeliveryStatus(order.deliveryStatus)}
                 </span>
               </div>
@@ -482,11 +481,11 @@ export default function OrderTrackingPage() {
               <PackageCheck className="w-6 h-6 text-emerald-400 shrink-0" />
               <div>
                 <h3 className="text-sm font-bold text-white">
-                  {isDelivered 
+                  {isDelivered
                     ? t.printsDeliveredMsg
                     : order.fulfillmentType === 'DELIVERY'
-                    ? (isPaid ? t.printsDispatchedMsg : t.printsPackagedMsg)
-                    : t.printsReadyCounterMsg}
+                      ? (isPaid ? t.printsDispatchedMsg : t.printsPackagedMsg)
+                      : t.printsReadyCounterMsg}
                 </h3>
                 <p className="text-xs text-slate-300 mt-0.5">
                   {order.paymentStatus === 'PAID'
@@ -600,9 +599,8 @@ export default function OrderTrackingPage() {
                   <span className="px-2 py-0.5 rounded bg-slate-800 text-slate-300">
                     {file.paperSize}
                   </span>
-                  <span className={`px-2 py-0.5 rounded font-semibold ${
-                    file.colorMode === 'COLOR' ? 'bg-purple-500/20 text-purple-300' : 'bg-slate-800 text-slate-300'
-                  }`}>
+                  <span className={`px-2 py-0.5 rounded font-semibold ${file.colorMode === 'COLOR' ? 'bg-purple-500/20 text-purple-300' : 'bg-slate-800 text-slate-300'
+                    }`}>
                     {file.colorMode === 'COLOR' ? t.colorText : t.bwText}
                   </span>
                   <span className="px-2 py-0.5 rounded bg-slate-800 text-slate-300">

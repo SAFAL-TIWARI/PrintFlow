@@ -18,8 +18,8 @@ function autoBackendPlugin() {
         // Backend is already up and listening
       });
       req.on('error', () => {
-        console.log('\x1b[36m[Vite Auto-Backend] Port 5000 inactive. Starting PrintPulse-Backend with persistent localDB...\x1b[0m');
-        const backendDir = path.resolve(__dirname, '../PrintPulse-Backend');
+        console.log('\x1b[36m[Vite Auto-Backend] Port 5000 inactive. Starting PrintFlow-Backend with persistent localDB...\x1b[0m');
+        const backendDir = path.resolve(__dirname, '../PrintFlow-Backend');
         backendProcess = spawn('node', ['src/server.js'], {
           cwd: backendDir,
           stdio: 'inherit',
